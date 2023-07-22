@@ -19,6 +19,11 @@ public class MobileDisplay implements Display, Observer {
     }
 
     @Override
+    public void confirmSubscription() {
+        System.out.println("Mobile Subscription added");
+    }
+
+    @Override
     public void Display() {
         System.out.println(temperature+" "+" humid "+ humidity+" "+"Pressure "+pressue);
     }

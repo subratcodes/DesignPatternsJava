@@ -25,8 +25,13 @@ public class Watch implements Display, Observer {
         System.out.println(pressure+"pressure");
     }
 
+    public void confirmSubscription(){
+        System.out.println(" Apple Watch Registered");
+    }
+
     @Override
     public void update(float temp, float humidity, float pressure) {
+
         this.temperature=temp;
         this.humidiy=humidity;
         this.pressure=pressure;

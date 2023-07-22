@@ -22,7 +22,8 @@ public class WeatherPublisher implements Subject {
     @Override
     public void addObserver(Observer o) {
         observers.add(o);
-        notifyObservers();
+        o.confirmSubscription();
+        NotifySpecificObserver(o);
     }
 
     @Override
@@ -32,6 +33,16 @@ public class WeatherPublisher implements Subject {
     }
 
 
+    public void NotifySpecificObserver(Observer o){
+        for(int i=0;i<observers.size();i++){
+            if(observers.get(i).equals(o)){
+                o.update(weatherData.getHumidty(),weatherData.getPressure(), weatherData.getPressure());
+                break;
+            }
+        }
+
+    }
+
     public void setMeasurements(Data newChanges){
          weatherData=newChanges;
         notifyObservers();
@@ -39,10 +50,10 @@ public class WeatherPublisher implements Subject {
 
     @Override
     public void notifyObservers() {
+        float temprature= weatherData.getTemprature();
+        float humidty= weatherData.getHumidty();
+        float pressure= weatherData.getPressure();
       for(int i=0;i<observers.size();i++){
-       float temprature= weatherData.getTemprature();
-       float humidty= weatherData.getHumidty();
-       float pressure= weatherData.getPressure();
 
           observers.get(i).update(temprature,humidty,pressure);
       }

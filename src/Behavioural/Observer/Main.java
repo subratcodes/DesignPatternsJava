@@ -4,6 +4,9 @@ import Behavioural.Observer.Displays.MobileDisplay;
 import Behavioural.Observer.Displays.Watch;
 import Behavioural.Observer.Entity.Data;
 
+import java.util.logging.Logger;
+
+
 public class Main {
     public static void main(String[] args){
 
@@ -11,8 +14,14 @@ public class Main {
         WeatherPublisher api=new WeatherPublisher(LosAngeles);
 
 
+//        Logger logger = Logger.getLogger(Main.class.getName());
+//
+//
+
         Watch appleWatch=new Watch();
+        Watch appleWatchSE=new Watch();
         api.addObserver(appleWatch);
+        api.addObserver(appleWatchSE);
 
     }
 }
