@@ -1,7 +1,17 @@
-public class Chilld extends Parent {
-    public Chilld(String ops){
-        super(ops);
+public class Chilld implements Grand {
+    
+
+    public void someMethod(){
+        
+    }   
+    
+    @Override
+    public void Test(){
+
+        System.out.println(" This default merthod can be ovvereried");
+
     }
+
 
    
 }
