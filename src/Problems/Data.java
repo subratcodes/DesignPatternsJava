@@ -1,8 +1,11 @@
 package Problems;
 
-public class Data {
+public  class Data {
 
    volatile int counter=0;
+
+
+   
     
     public Data(int count){
         this.counter=count;
@@ -13,7 +16,7 @@ public class Data {
     //    counter++;
     // }
 
-    public void setCOunt(int val){
+    public void setCount(int val){
         this.counter=val; 
     }
 

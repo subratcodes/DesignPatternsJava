@@ -1,41 +1,27 @@
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.UserPrincipal;
 import java.util.concurrent.CountDownLatch;
 import CountDownLatch.Worker;
 import Problems.Data;
+import javafx.scene.shape.Path;
 
 public class Main {
+
+
+
+
     public static void main(String[] args) {
 
+        File file = new File("/workspace/DesignPatternsJava/src/Problems/file.txt");
 
-        Data d=new Data(0);
-
-        Thread t1=new Thread(new Runnable(){
-            public void run(){
-                for(int i=0;i<10000000;i++){
-                    int val=d.getCount();
-                    d.setCount(val+1);
-                }
-            }
-        });
+        System.out.println("Is exist: " + file.exists()); // Is exist: true
+        System.out.println("Is file: " + file.isFile()); // Is file: true
+        System.out.println("Name of file: " + file.getName());
 
 
-
-
-        Thread t2=new Thread(new Runnable(){
-            public void run(){
-                for(int i=0;i<10000000;i++){
-                    int val=d.getCount();
-                    d.setCount(val+1);
-                }
-            }
-        });
-
-            t1.start();
-            t2.start();
-
-
-
-        System.out.println(d.getCount());
-
+        
 
 
 
