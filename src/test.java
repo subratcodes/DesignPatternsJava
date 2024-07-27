@@ -9,12 +9,7 @@ public enum test {
         return d;
     }
 
-    // private Data d=new Data(0);
-
-    // Data getInstance(){
-    //     return d;
-    // }
-
+   
 
 
 

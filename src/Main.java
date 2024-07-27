@@ -9,6 +9,7 @@ import CountDownLatch.Worker;
 import DesignPatterns.CustomerInfo.Customer;
 import DesignPatterns.Factory.Pizza;
 import DesignPatterns.Factory.PizzaFactory;
+import Problems.Data;
 import threads.Task;
 
 
@@ -16,76 +17,48 @@ import threads.Task;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-            //shared data
         Data d=new Data(0);
 
-        Thread t1=new Thread(new Runnable(){
-            public void run(){
-                for(int i=0;i<100;i++){
-                    int val=d.getCount();
-                    d.setCount(val+1);
-                    d.increment();
-                    
-                }
-            }
-        };
-
-<<<<<<< HEAD
+            //shared data
           
 
-        Thread t2=new Thread(new Runnable(){
-            public void run(){
-                for(int i=0;i<100;i++){
-                    int val=d.getCount();
-                    d.setCount(val+1);
+            Thread t1=new Thread(new Runnable(){
+                public void run(){
+                    for(int i=0;i<100000;i++){
+                        int val=d.getCount();
+                        d.setCount(val+1);
+                        
+                    }
                 }
-            }
-        });
+            });
+    
+              
+    
+            Thread t2=new Thread(new Runnable(){
+                public void run(){
+                    for(int i=0;i<100000;i++){
+                        int val=d.getCount();
+                        d.setCount(val-1);
+                    }
+                }
+            });
 
-        Thread[] tasks=new Thread[]{t1,t2};
-
-        for(Thread task:tasks){
-            task.start();
-            task.join(1000);
-        }
-
-
-        System.out.println(d.getCount());
-=======
-        Runnable runnable2 =()->{
-            try {
-
-                PizzaFactory.createPizza("margeritha");
-                
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("Some Exception occured while creating your pizza");
-            }
-        };
->>>>>>> 8f6d19e288fbae4fecd0f9f52f72a174bbc953be
-
-       
-        Runnable runnable3 =()->{
-            try {
-
-                PizzaFactory.createPizza("margeritha");
-                
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("Some Exception occured while creating your pizza");
-            }
-        };
-
-        t.addTask(runnable);
-        t.addTask(runnable2);
-        t.addTask(runnable3);
+            Thread[] tasks=new Thread[]{t1,t2};
 
 
-<<<<<<< HEAD
-=======
-        
-
->>>>>>> 8f6d19e288fbae4fecd0f9f52f72a174bbc953be
+            //consider these 2 threads. We want all of the threads to ru
+                    for(Thread task:tasks){
+                        task.start();
+                        task.join();
+                    }
+            
+            
+            
+            // if we would not have joined it. This SOUt would have runn .
+            // but since we have joinred. This wont run. until t1 and t2 completes.
+            
+                    System.out.println(d.getCount());
+    
     }
 
 

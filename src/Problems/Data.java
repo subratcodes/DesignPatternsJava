@@ -2,7 +2,7 @@ package Problems;
 
 public class Data {
 
-   volatile int counter;
+   public volatile int counter;
     
     Object obj=new Object();
 
@@ -19,7 +19,7 @@ public class Data {
     public  void increment(){
         synchronized(this.obj){
             counter++;
-            System.out.println(this.counter);
+          //  System.out.println(this.counter);
         }
        
     }
