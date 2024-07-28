@@ -11,35 +11,43 @@ import DesignPatterns.Factory.Pizza;
 import DesignPatterns.Factory.PizzaFactory;
 import Problems.Data;
 import threads.Task;
-
+import Problems.LockWaitNotify.MessageQueue;
+import Problems.LockWaitNotify.Producer;
 
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        Data d=new Data(0);
+        Producer p=new Producer(10,20);
 
             //shared data
           
 
             Thread t1=new Thread(new Runnable(){
                 public void run(){
-                    for(int i=0;i<100000;i++){
-                        int val=d.getCount();
-                        d.setCount(val+1);
+                    try {
+
+                      p.producer("Message ID :", 10);
                         
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Exceptiuon occured for"+"Thread");
                     }
+                    
                 }
             });
     
-              
     
             Thread t2=new Thread(new Runnable(){
                 public void run(){
-                    for(int i=0;i<100000;i++){
-                        int val=d.getCount();
-                        d.setCount(val-1);
+                    try {
+                        p.consumer();
+                        
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Error at consumer sectioon");
                     }
+                  
                 }
             });
 
@@ -57,7 +65,7 @@ public class Main {
             // if we would not have joined it. This SOUt would have runn .
             // but since we have joinred. This wont run. until t1 and t2 completes.
             
-                    System.out.println(d.getCount());
+                   
     
     }
 
