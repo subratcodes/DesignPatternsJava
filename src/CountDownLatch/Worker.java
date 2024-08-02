@@ -10,7 +10,7 @@ public class Worker extends Thread
     public Worker(int delay, CountDownLatch latch, 
                                     String name) 
     { 
-        super(name); 
+      
         this.delay = delay; 
         this.latch = latch; 
     } 
