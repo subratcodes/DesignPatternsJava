@@ -66,7 +66,7 @@ public class BasicElevatorController implements Controller {
     }
 
 
-    public void getElevator(ElevatorCallRequest req){
+    public synchronized void  getElevator(ElevatorCallRequest req){
 
         Optional<Elevator> elevatorId=this.getOptimalElevator(req);  
         

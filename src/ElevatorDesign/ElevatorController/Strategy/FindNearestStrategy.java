@@ -1,8 +1,6 @@
 package ElevatorDesign.ElevatorController.Strategy;
-
 import java.util.List;
 import java.util.Optional;
-
 import ElevatorDesign.Elevator.Elevator;
 
 public class FindNearestStrategy implements ElevatorStrategy {
